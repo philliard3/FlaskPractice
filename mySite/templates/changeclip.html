@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Changing Clipping Image</title>
+</head>
+<body>
+<style>
+    .container {
+      position: relative;
+    }
+    #clippable {
+      clip-path: polygon(50px 20px, 80px 20px, 80px 80px, 50px 80px);
+      color: #fff;
+      transition: 0.35s;
+    }
+</style>
+<div class="container">
+  <img id="clippable" src="http://lorempixel.com/200/200/nightlife/3" />
+</div>
+<button type="button" onclick="redraw_left()">left</button>
+<button type="button" onclick="redraw_square()">Square</button>
+<button type="button" onclick="redraw_right()">right</button>
+<button type="button" onclick="next_frame()">Next Frame</button>
+<button type="button" onclick="clear()">Clear</button>
+
+<script src="../static/changeclip.js"></script>
+</body>
+</html>

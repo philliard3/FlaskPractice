@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Clip</title>
+</head>
+<body>
+<style>
+/**This is how you make clips of images (to affect it in real time, adjust the clip-path property using js)**/
+    .container {
+      position: relative;
+    }
+    #clip1 {
+      /**position: absolute;**/
+      clip-path: polygon(15px 99px, 30px 87px, 65px 99px, 85px 55px,
+        122px 57px, 184px 73px, 198px 105px, 199px 150px,
+        145px 159px, 155px 139px, 126px 120px, 112px 138px,
+        80px 128px, 39px 126px, 24px 104px);
+      /**clip-path: inset(0, 100px, 200px, 0);**/
+    }
+    #clip2 {
+        clip-path: circle(30px at 100px 100px);
+    }
+    #clip3 {
+        /**position:absolute;**/
+        clip-path: inset(15% 15%);
+    }
+    #clip4 {
+        /**position:absolute;**/
+        clip-path: inset(50px 50px);
+    }
+    #clip5 {
+        /**position:absolute;**/
+        /**rectangle**/
+        clip-path: polygon(0 0, 0 30px, 30px 30px, 30px 0);
+    }
+    #clip6 {
+        /**position:absolute;**/
+        /**rectangle**/
+        clip-path: polygon(50px 20px, 80px 20px, 80px 80px, 50px 80px);
+    }
+    #clip7 {
+        /**position:absolute;**/
+        /**rectangle**/
+        clip-path: polygon(0px 0px, 80px 0px, 80px 80px, 0px 80px);
+    }
+</style>
+
+<div class="container">
+  <img src="http://lorempixel.com/200/200/nightlife/3" />
+</div>
+<div class="container">
+  <img id="clip1" src="http://lorempixel.com/200/200/nightlife/3" />
+</div>
+<div class="container">
+  <img id="clip2" src="http://lorempixel.com/200/200/nightlife/3" />
+</div>
+<div class="container">
+  <img id="clip3" src="http://lorempixel.com/200/200/nightlife/3" />
+</div>
+<div class="container">
+  <img id="clip4" src="http://lorempixel.com/200/200/nightlife/3" />
+</div>
+<div class="container">
+  <img id="clip5" src="http://lorempixel.com/200/200/nightlife/3" />
+</div>
+<div class="container">
+  <img id="clip6" src="http://lorempixel.com/200/200/nightlife/3" />
+</div>
+<div class="container">
+  <img id="clip7" src="http://lorempixel.com/200/200/nightlife/3" />
+</div>
+
+
+</body>
+</html>

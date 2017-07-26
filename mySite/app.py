@@ -27,6 +27,11 @@ def aboutPage():
 @app.route('/contact')
 def contactPage():
     return(render_template('contact.html'))
+
+@app.route('/graph')
+def make_graph():
+    return('<html>'++'</html>')
+
 '''
 #most of that could be summarized as:
 @app.route('/<page>')
