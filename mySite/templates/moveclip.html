@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Move Clip</title>
+</head>
+<body>
+
+<style>
+    .container {
+      position: relative;
+      padding:5px;
+    }
+    #clippable {
+      position: relative;
+      clip-path: polygon(50px 20px, 80px 20px, 80px 80px, 50px 80px);
+      color: #fff;
+      transition: 0.35s;
+      /**padding:1em;**/
+    }
+</style>
+<div class="container">
+  <img id="clippable" src="http://lorempixel.com/200/200/nightlife/3" />
+</div>
+
+<button id="button" type="button" onclick="next_frame()">Next Frame</button>
+
+<script src="../static/changeclip.js"></script>
+<script type="text/javascript">
+    //document.getElementById('button').style.padding=0
+    console.log(document.getElementById('button').style.padding=="");
+    console.log(document.getElementById('clippable').style.padding=="");
+    // margin moves the image over!!!! use this to make the image move without moving its container!!!
+    //https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+    document.getElementById('clippable').setAttribute('style', 'margin:5px;');
+</script>
+</body>
+</html>
