@@ -2,10 +2,7 @@ var rect = [50, 20, 80, 80];
 var frames = [[50, 20, 80, 80], [20, 30, 80, 90], [50, 20, 60, 80], [0, 20, 80, 80]];
 var cur_frame = 0;
 function redraw(){
-    //console.log("I'm in the function");
-    //console.log("The elements are");
     var polygon = "polygon("+(rect[0])+"px "+(rect[1])+"px, "+(rect[2])+"px "+rect[1]+"px, "+(rect[2])+"px "+(rect[3])+"px, "+(rect[0])+"px "+(rect[3])+"px);";
-    //console.log("before: "+(document.getElementById("clippable").getAttribute("clip-path")));
     document.getElementById("clippable").setAttribute("style", "clip-path:"+polygon);
 }
 
