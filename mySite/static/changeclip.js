@@ -43,10 +43,10 @@ function next_frame(){
     cur_frame+=1;
     if(cur_frame>=frames.length){
         cur_frame=0;
-        rect = frames[0];
-    }else{
-        rect = frames[cur_frame];
     }
+    for(var i=0;i<rect.length;i++)
+        rect[i] = frames[cur_frame][i];
+
     redraw();
 }
 
