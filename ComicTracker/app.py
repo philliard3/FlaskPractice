@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, session, json, redirect, url_
 
 names = []
 app=Flask(__name__)
-# app.secret_key = 'any random string’
+app.secret_key = "any random string"
 # find out how the secret key is meant to work
 
 @app.route("/")
@@ -45,22 +45,21 @@ def login_attempt():
         print(names)
         if request.form["name"] in names:
             print("moving on")
-            # session["name"] = request.form["name"]
+            session["name"] = request.form["name"]
             return(redirect(url_for("dashboard", name=request.form["name"])))
     return(redirect(url_for("login", failed=True)))
 
 @app.route("/logout")
 def logout():
-    # session.pop("name", None)
+    session.pop("name", None)
     return(redirect(url_for("login")))
 
-'''
+@app.route("/dashboard/")
 @app.route("/dashboard")
 def dashboard_no_name():
     if "name" in session:
         return(redirect(url_for("dashboard", name=session["name"])))
     return(redirect((url_for("login", failed=True))))
-'''
 
 @app.route("/dashboard/<name>")
 def dashboard(name=""):
