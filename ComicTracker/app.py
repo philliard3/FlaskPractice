@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, session, json, redirect, url_for, Response
+import pymongo
 
-names = []
+client = pymongo.MongoClient()
+usernames = client.accounttesting.users
+# names = []
 app=Flask(__name__)
 app.secret_key = "any random string"
 # find out how the secret key is meant to work
@@ -34,16 +37,18 @@ def login(failed=False):
 @app.route("/registerattempt", methods=["POST"])
 def register_attempt():
     if "name" in request.form.keys():
-        if not(request.form["name"] in names):
-            names.append(request.form["name"])
+        if not(request.form["name"] in [i for i in usernames.find()]):
+            # names.append(request.form["name"])
+            usernames.insert({"name": request.form["name"]})
             return(redirect(url_for("login", failed=False)))
     return(redirect(url_for("register", failed=True)))
 
 @app.route("/loginattempt", methods=["POST"])
 def login_attempt():
     if "name" in request.form.keys():
-        print(names)
-        if request.form["name"] in names:
+        # print(names)
+        print([i for i in usernames.find()])
+        if request.form["name"] in ([i["name"] for i in usernames.find()]):
             print("moving on")
             session["name"] = request.form["name"]
             return(redirect(url_for("dashboard", name=request.form["name"])))
@@ -68,6 +73,7 @@ def dashboard(name=""):
     return(redirect(url_for("login", failed=True)))
 
 if(__name__=="__main__"):
+    usernames.remove()
     app.run(debug=True)
 
 
