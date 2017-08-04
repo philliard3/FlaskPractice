@@ -5,8 +5,7 @@ client = pymongo.MongoClient()
 usernames = client.accounttesting.users
 # names = []
 app=Flask(__name__)
-app.secret_key = "any random string"
-# find out how the secret key is meant to work
+app.secret_key = "change this string"
 
 @app.route("/")
 def homepage():
@@ -46,7 +45,6 @@ def register_attempt():
 @app.route("/loginattempt", methods=["POST"])
 def login_attempt():
     if "name" in request.form.keys():
-        # print(names)
         print([i for i in usernames.find()])
         if request.form["name"] in ([i["name"] for i in usernames.find()]):
             print("moving on")
