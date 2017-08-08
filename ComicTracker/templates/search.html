@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+<tr>
+    <td>
+        <p>Tapastic</p>
+        {% for comic_data in tapas_titles %}
+            {% for key in comic_data %}
+                <tr>
+                    <th> {{ key }} </th>
+                    <td> {{ comic_data[key] }} </td>
+                </tr>
+            {% endfor %}
+            <p></p>
+        {% endfor %}
+    </td>
+    <td>
+        <p>Webtoons</p>
+        {% for comic_data in webtoon_titles %}
+            {% for key in comic_data %}
+                <tr>
+                    <th> {{ key }} </th>
+                    <td> {{ comic_data[key] }} </td>
+                </tr>
+            {% endfor %}
+            <p></p>
+        {% endfor %}
+    </td>
+</tr>
+</body>
+</html>

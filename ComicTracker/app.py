@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, session, json, redirect, url_for, Response
 import pymongo
+import tapaspy
+import webtoonpy
 
 client = pymongo.MongoClient()
 usernames = client.accounttesting.users
@@ -70,8 +72,19 @@ def dashboard(name=""):
         return("<html><h1>Hello, "+name+".</h1></html>")
     return(redirect(url_for("login", failed=True)))
 
+@app.route("/search")# , methods=["POST"])
+def search():
+    # tapas_titles = tapaspy.search_comic(comic_name=request.form["comic_name"])
+    # webtoon_titles = webtoonpy.search_comic(comic_name=request.form["comic_name"])
+    tapas_titles = tapaspy.search_comic()
+    webtoon_titles = webtoonpy.search_comic()
+    return(render_template("search.html", tapas_titles=tapas_titles, webtoon_titles=webtoon_titles))
+
+def search_results():
+    return
+
 if(__name__=="__main__"):
-    usernames.remove()
+    # usernames.remove()
     app.run(debug=True)
 
 
