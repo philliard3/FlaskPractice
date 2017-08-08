@@ -71,7 +71,7 @@ def dashboard(name=""):
     return(redirect(url_for("login", failed=True)))
 
 if(__name__=="__main__"):
-    usernames.remove()
+    # usernames.remove()
     app.run(debug=True)
 
 
