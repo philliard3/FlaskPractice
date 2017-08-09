@@ -1,0 +1,49 @@
+{
+  "title": "string",
+  "author": "string",
+  "sources": [
+    "source1, ex: webtoon",
+    "source2, ex: tapastic",
+    "source3, ex: tumblr"
+  ],
+  "hosting": {
+    "webtoon": "url or None",
+    "tapas": "url or None",
+    "smackjeeves": "url or None",
+    "tumblr": "url or None",
+    "lehzin": "url or None",
+    "duck": "url or None",
+    "arcrise": "url or None",
+    "shared": "url or None",
+    "independent": "url or None",
+    "other": {
+      "sitename": "url or None"
+    }
+  },
+
+  "social media": {
+    "patreon": [
+      "username",
+      "url"
+    ],
+    "facebook": [
+      "username",
+      "url"
+    ],
+    "twitter": [
+      "username",
+      "url"
+    ],
+    "tumblr": [
+      "username",
+      "url"
+    ],
+    "instagram": [
+      "username",
+      "url"
+    ],
+    "other": {
+      "sitename": "url or None"
+    }
+  }
+}

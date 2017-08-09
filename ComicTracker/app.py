@@ -4,9 +4,20 @@ import tapaspy
 import webtoonpy
 
 client = pymongo.MongoClient()
-usernames = client.accounttesting.users
-# names = []
-app=Flask(__name__)
+# database of user accounts
+userdb = client.accounttesting.users
+'''
+I need to come up with how to collect and store the comics. If I keep separate copies, then it'll take more space but will provide records.
+'''
+# database of comics from external sources
+externalcomicdb = client.accounttesting.externalcomics
+# database of comics that have been fused from multiple sources
+aggregatecomicdb = client.accounttesting.aggregatecomics
+
+# database of all tags
+tagdb = client.accounttesting.tags
+
+app = Flask(__name__)
 app.secret_key = "change this string"
 
 @app.route("/")
@@ -16,13 +27,13 @@ def homepage():
 # this is how you can send or receive stuff
 @app.route("/api", methods=["POST", "GET"])
 def api_test():
-    if request.method=="POST":
+    if request.method == "POST":
         if "greeting" in request.form.keys():
             return(json.jsonify(message="valid!"))
         response = json.jsonify({"message":"invalid"})
         response.status_code = 400
         return(response)
-    elif request.method=="GET":
+    elif request.method == "GET":
         return(json.jsonify(message="gotten"))
 
 @app.route("/register")
@@ -38,17 +49,17 @@ def login(failed=False):
 @app.route("/registerattempt", methods=["POST"])
 def register_attempt():
     if "name" in request.form.keys():
-        if not(request.form["name"] in [i for i in usernames.find()]):
+        if not(request.form["name"] in [i for i in userdb.find()]):
             # names.append(request.form["name"])
-            usernames.insert({"name": request.form["name"]})
+            userdb.insert({"name": request.form["name"]})
             return(redirect(url_for("login", failed=False)))
     return(redirect(url_for("register", failed=True)))
 
 @app.route("/loginattempt", methods=["POST"])
 def login_attempt():
     if "name" in request.form.keys():
-        print([i for i in usernames.find()])
-        if request.form["name"] in ([i["name"] for i in usernames.find()]):
+        print([i for i in userdb.find()])
+        if request.form["name"] in ([i["name"] for i in userdb.find()]):
             print("moving on")
             session["name"] = request.form["name"]
             return(redirect(url_for("dashboard", name=request.form["name"])))
@@ -84,7 +95,7 @@ def search_results():
     return
 
 if(__name__=="__main__"):
-    # usernames.remove()
+    # userdb.remove()
     app.run(debug=True)
 
 
