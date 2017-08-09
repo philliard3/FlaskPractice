@@ -76,8 +76,8 @@ def dashboard(name=""):
 def search():
     # tapas_titles = tapaspy.search_comic(comic_name=request.form["comic_name"])
     # webtoon_titles = webtoonpy.search_comic(comic_name=request.form["comic_name"])
-    tapas_titles = tapaspy.search_comic()
-    webtoon_titles = webtoonpy.search_comic()
+    tapas_titles = tapaspy.search_comic("dragnarok")
+    webtoon_titles = webtoonpy.search_comic("dragnarok")
     return(render_template("search.html", tapas_titles=tapas_titles, webtoon_titles=webtoon_titles))
 
 def search_results():

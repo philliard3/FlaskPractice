@@ -9,24 +9,20 @@
     <td>
         <p>Tapastic</p>
         {% for comic_data in tapas_titles %}
-            {% for key in comic_data %}
-                <tr>
-                    <th> {{ key }} </th>
-                    <td> {{ comic_data[key] }} </td>
-                </tr>
-            {% endfor %}
+            <a href="http://{{comic_data['link']}}">
+                {{comic_data['title']}} by {{comic_data['author']}}
+                <img src="{{comic_data['image_icon']}}" width="100px"></img>
+            </a>
             <p></p>
         {% endfor %}
     </td>
     <td>
         <p>Webtoons</p>
-        {% for comic_data in webtoon_titles %}
-            {% for key in comic_data %}
-                <tr>
-                    <th> {{ key }} </th>
-                    <td> {{ comic_data[key] }} </td>
-                </tr>
-            {% endfor %}
+        {% for comic_data in tapas_titles %}
+            <a href="{{comic_data['url']}}">
+                {{comic_data['title']}} by {{comic_data['author']}}
+                <img src="{{comic_data['image_icon']}}" width="100px"></img>
+            </a>
             <p></p>
         {% endfor %}
     </td>
